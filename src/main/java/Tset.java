@@ -1,3 +1,5 @@
+import sun.security.krb5.internal.Ticket;
+
 public class Tset {
     /*
     题目：三个人卖三十张票
@@ -13,8 +15,29 @@ public class Tset {
         /*
         四个线程 t1，t2，t3，main
          */
-        Thread t1 = new Thread();
-        Thread t2 = new Thread();
-        Thread t3 = new Thread();
+
+        SoureceTicket Ticket = new SoureceTicket();
+
+        //api:Thread(Runnable target,String name)allocates a new Thread Object
+        /*
+        特殊的
+        New（创建）
+        Runnable（运行）
+        Blocked（阻塞）
+        WAITTING
+        TIMED_WAITTING(超时)
+
+         */
+
+        //售票一
+        /*
+        new Thread(new Runnable){
+        }
+         */
+        new Thread(()->{for(int i = 1 ; i <= 30 ; i++) Ticket.sale();},"A").start();
+        //售票二
+        new Thread(()->{for(int i = 1 ; i <= 30 ; i++) Ticket.sale();},"B").start();
+        //售票三
+        new Thread(()->{for(int i = 1 ; i <= 30 ; i++) Ticket.sale();},"C").start();
     }
 }
